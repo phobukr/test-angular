@@ -1,0 +1,56 @@
+
+
+.delete-button {
+  background-color: #ff6347;
+  color: #ffffff;
+}
+.move-down-button {
+  background-color: #add8e6;
+  color: #000000;
+}
+.move-up-button {
+  background-color: #add8e6;
+  color: #000000;
+}
+.mark-done-button {
+  background-color: #90ee90;
+  color: #000000;
+}
+.apply-filter-button {
+  background-color: #ffe4b5;
+  color: #000000;
+}
+.add-task-button {
+  background-color: #66CCCC;
+  color: #000000;
+}
+.task-count-label {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 14px;
+  color: RGB(0, 102, 204);
+}
+.task-table {
+  border-collapse: collapse;
+}
+.task-table th, .task-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.high-priority {
+  background-color: rgb(255, 204, 204);
+}
+.medium-priority {
+  background-color: rgb(255, 255, 204);
+}
+.low-priority {
+  background-color: rgb(204, 255, 204);
+}
+.selected {
+  background-color: #ccc;
+}
+.task-name-field {
+  background-color: rgb(230, 240, 255);
+  width: 20ch;
+}
