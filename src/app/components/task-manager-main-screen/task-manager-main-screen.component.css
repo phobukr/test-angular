@@ -1,0 +1,8 @@
+
+
+.label { font-family: Arial; font-weight: bold; font-size: 14px; color: rgb(0, 102, 204); }
+.high-priority { background-color: rgb(255, 204, 204); }
+.medium-priority { background-color: rgb(255, 255, 204); }
+.low-priority { background-color: rgb(204, 255, 204); }
+.selected-cell { background-color: rgb(200, 200, 200); }
+.input-field { background-color: rgb(230, 240, 255); width: 20ch; }
