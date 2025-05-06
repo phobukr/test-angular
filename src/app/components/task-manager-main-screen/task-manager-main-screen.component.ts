@@ -1,10 +1,17 @@
 
 
 import { Component, OnInit } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {NgClass, NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-task-manager-main-screen',
   templateUrl: './task-manager-main-screen.component.html',
+  imports: [
+    FormsModule,
+    NgClass,
+    NgForOf
+  ],
   styleUrls: ['./task-manager-main-screen.component.css']
 })
 export class TaskManagerMainScreenComponent implements OnInit {
@@ -107,27 +114,31 @@ export class TaskManagerMainScreenComponent implements OnInit {
   }
 
   updateTaskCountLabel(): void {
-    const taskCount = this.tasks.length;
-    document.getElementById('taskCountLabel').innerHTML = 'Tasks: ' + taskCount;
+    // const taskCount = this.tasks.length;
+    // @ts-ignore
+    // document.getElementById('taskCountLabel').innerHTML = 'Tasks: ' + taskCount;
   }
 
   refreshTable(): void {
-    const table = document.getElementById('taskTable');
-    table.innerHTML = '';
-    const headerRow = table.insertRow(0);
-    const headers = ['Name', 'Priority', 'Status'];
-    headers.forEach(header => {
-      const headerCell = headerRow.insertCell();
-      headerCell.innerHTML = header;
-    });
-    this.tasks.forEach(task => {
-      const row = table.insertRow();
-      const cells = [task.name, task.priority, task.status];
-      cells.forEach(cell => {
-        const cellElement = row.insertCell();
-        cellElement.innerHTML = cell;
-      });
-    });
+    // const table = document.getElementById('taskTable');
+    // @ts-ignore
+    // table.innerHTML = '';
+    // @ts-ignore
+    // const headerRow = table.insertRow(0);
+    // const headers = ['Name', 'Priority', 'Status'];
+    // headers.forEach(header => {
+    //   const headerCell = headerRow.insertCell();
+    //   headerCell.innerHTML = header;
+    // });
+    // this.tasks.forEach(task => {
+      // @ts-ignore
+      // const row = table.insertRow();
+      // const cells = [task.name, task.priority, task.status];
+      // cells.forEach(cell => {
+      //   const cellElement = row.insertCell();
+      //   cellElement.innerHTML = cell;
+      // });
+    // });
   }
 
 }
