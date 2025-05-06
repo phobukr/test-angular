@@ -1,8 +1,14 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+
+
 import { provideRouter } from '@angular/router';
+import { TaskManagerMainScreenComponent } from './task-manager-main-screen/task-manager-main-screen.component';
+import { TaskManagerCreateTaskComponent } from './task-manager-create-task/task-manager-create-task.component';
+import { TaskManagerEditTaskComponent } from './task-manager-edit-task/task-manager-edit-task.component';
 
-import { routes } from './app.routes';
+const appRoutes = [
+  { path: 'tasks', component: TaskManagerMainScreenComponent },
+  { path: 'tasks/create', component: TaskManagerCreateTaskComponent },
+  { path: 'tasks/:id/edit', component: TaskManagerEditTaskComponent }
+];
 
-export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
-};
+export const appRouter = provideRouter(appRoutes);
