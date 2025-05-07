@@ -1,24 +1,31 @@
 
 
 import { Component, OnInit } from '@angular/core';
+import {FormsModule} from "@angular/forms";
+import {NgClass, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-task-manager-main-screen',
   templateUrl: './task-manager-main-screen.component.html',
+  imports: [
+    FormsModule,
+    NgClass,
+    NgForOf
+  ],
   styleUrls: ['./task-manager-main-screen.component.css']
 })
 export class TaskManagerMainScreenComponent implements OnInit {
 
   taskList: Task[] = [];
-  taskTable: any;
+  tasks: any;
   taskCountLabel: any;
   filterComboBox: any;
   priorityComboBox: any;
   taskNameField: any;
-  selectedTask: Task;
-  filter: string;
-  newTaskPriority: string;
-  newTaskName: string;
+  selectedTask: Task | null = null;
+  filter: string = "All";
+  newTaskPriority: string = "High";
+  newTaskName: string = "";
 
   constructor() { }
 
@@ -30,36 +37,38 @@ export class TaskManagerMainScreenComponent implements OnInit {
     this.refreshTable();
   }
 
-  deleteTask(task: Task): void {
-    this.taskList = this.taskList.filter(t => t !== task);
+  deleteTask(): void {
+    this.taskList = this.taskList.filter(t => t !== this.selectedTask);
     this.refreshTable();
   }
 
-  moveDown(task: Task): void {
-    const index = this.taskList.indexOf(task);
+  moveDown(): void {
+    if (!this.selectedTask) return
+    const index = this.taskList.indexOf(this.selectedTask);
     if (index < this.taskList.length - 1) {
       this.taskList.splice(index, 1);
-      this.taskList.splice(index + 1, 0, task);
+      this.taskList.splice(index + 1, 0, this.selectedTask);
     }
     this.refreshTable();
   }
 
-  moveUp(task: Task): void {
-    const index = this.taskList.indexOf(task);
+  moveUp(): void {
+    if (!this.selectedTask) return
+    const index = this.taskList.indexOf(this.selectedTask);
     if (index > 0) {
       this.taskList.splice(index, 1);
-      this.taskList.splice(index - 1, 0, task);
+      this.taskList.splice(index - 1, 0, this.selectedTask);
     }
     this.refreshTable();
   }
 
-  markDone(task: Task): void {
-    task.status = 'DONE';
+  markDone(): void {
+    if (!this.selectedTask) return
+    this.selectedTask.status = 'DONE';
     this.refreshTable();
   }
 
-  applyFilter(filter: string): void {
-    this.filter = filter;
+  applyFilter(): void {
     this.refreshTable();
   }
 
@@ -72,12 +81,12 @@ export class TaskManagerMainScreenComponent implements OnInit {
   }
 
   refreshTable(): void {
-    if (this.filter) {
-      this.taskTable = this.taskList.filter(task => task.status === this.filter);
+    if (this.filter != "All") {
+      this.tasks = this.taskList.filter(task => task.status === this.filter);
     } else {
-      this.taskTable = this.taskList;
+      this.tasks = this.taskList;
     }
-    this.taskCountLabel = this.taskTable.length;
+    this.taskCountLabel = this.tasks.length;
   }
 
   selectTask(task: Task): void {

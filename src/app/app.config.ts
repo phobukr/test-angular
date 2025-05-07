@@ -1,13 +1,8 @@
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
 
+import { routes } from './app.routes';
 
-import { Injectable } from '@angular/core';
-
-@Injectable()
-export class AppConfig {
-  title = 'Task Manager';
-  routes = [
-    { path: '', redirectTo: 'tasks', pathMatch: 'full' },
-    { path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule) },
-    { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) }
-  ];
-}
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+};

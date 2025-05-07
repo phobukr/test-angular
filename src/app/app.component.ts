@@ -1,13 +1,14 @@
 
 
 import { Component } from '@angular/core';
-import { AppConfig } from './app.config';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  imports: [
+    RouterOutlet
+  ],
   template: '<router-outlet></router-outlet>'
 })
 export class AppComponent {
-  title = AppConfig.title;
-  routes = AppConfig.routes;
 }

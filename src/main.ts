@@ -1,7 +1,7 @@
 
 
-import { bootstrapApplication } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { TaskManagerMainScreenComponent } from './app/components/task-manager-main-screen/task-manager-main-screen.component';
+import { appConfig } from './app/app.config';
 
-bootstrapApplication(AppComponent, { providers: [TaskManagerMainScreenComponent] });
+bootstrapApplication(AppComponent, appConfig);
