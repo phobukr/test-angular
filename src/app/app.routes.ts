@@ -1,3 +1,6 @@
-import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+
+import { RouterModule } from '@angular/router';
+import { routes } from './app.config';
+const routingModule = RouterModule.forRoot(routes);
+export { routingModule };

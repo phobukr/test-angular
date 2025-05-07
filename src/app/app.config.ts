@@ -1,8 +1,11 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+
+
 import { provideRouter } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { TaskManagerMainScreenComponent } from './components/task-manager-main-screen/task-manager-main-screen.component';
 
-import { routes } from './app.routes';
+const routes = [
+  { path: 'task-manager', component: TaskManagerMainScreenComponent }
+];
 
-export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
-};
+provideRouter(routes);
