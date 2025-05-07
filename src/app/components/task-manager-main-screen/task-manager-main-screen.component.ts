@@ -1,10 +1,17 @@
 
 
 import { Component, OnInit } from '@angular/core';
+import {FormsModule} from "@angular/forms";
+import {NgClass, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-task-manager-main-screen',
   templateUrl: './task-manager-main-screen.component.html',
+  imports: [
+    FormsModule,
+    NgClass,
+    NgForOf
+  ],
   styleUrls: ['./task-manager-main-screen.component.css']
 })
 export class TaskManagerMainScreenComponent implements OnInit {
@@ -117,15 +124,14 @@ export class TaskManagerMainScreenComponent implements OnInit {
   }
 
   refreshTable(): void {
-    this.tableModel = [];
+    this.tasks = [];
     if (this.selectedFilter === 'All') {
-      this.tableModel = this.taskList.map(task => ({ ...task }));
+      this.tasks = this.taskList.map(task => ({ ...task }));
     } else if (this.selectedFilter === 'TODO') {
-      this.tableModel = this.taskList.filter(task => task.status === 'TODO').map(task => ({ ...task }));
+      this.tasks = this.taskList.filter(task => task.status === 'TODO').map(task => ({ ...task }));
     } else if (this.selectedFilter === 'DONE') {
-      this.tableModel = this.taskList.filter(task => task.status === 'DONE').map(task => ({ ...task }));
+      this.tasks = this.taskList.filter(task => task.status === 'DONE').map(task => ({ ...task }));
     }
   }
 
 }
-    

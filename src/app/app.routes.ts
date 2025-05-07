@@ -5,7 +5,7 @@ import { TaskManagerMainScreenComponent } from './components/task-manager-main-s
 
 export const ROUTES: Route[] = [
   {
-    path: '/task-manager',
+    path: 'task-manager',
     component: TaskManagerMainScreenComponent
   }
 ];
