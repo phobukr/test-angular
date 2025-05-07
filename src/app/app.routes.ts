@@ -1,3 +1,11 @@
-import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+
+import { Route } from '@angular/router';
+import { TaskManagerMainScreenComponent } from './components/task-manager-main-screen/task-manager-main-screen.component';
+
+export const routes: Route[] = [
+  {
+    path: 'task-manager',
+    component: TaskManagerMainScreenComponent
+  }
+];
