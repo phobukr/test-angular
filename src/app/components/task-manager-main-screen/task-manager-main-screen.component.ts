@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskManagerMainScreenComponent implements OnInit {
 
+  tasks: any[] = [];
+  taskList: any[] = [];
   selectedTask: any = null;
   selectedFilter: string = 'All';
   newTaskPriority: string = 'High';
@@ -123,7 +125,6 @@ export class TaskManagerMainScreenComponent implements OnInit {
     } else if (this.selectedFilter === 'DONE') {
       this.tableModel = this.taskList.filter(task => task.status === 'DONE').map(task => ({ ...task }));
     }
-    this.taskCount = this.tableModel.length;
   }
 
 }
