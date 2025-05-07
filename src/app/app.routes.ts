@@ -1,6 +1,6 @@
+import { Routes } from '@angular/router';
+import { TaskManagerMainScreenComponent } from './components/task-manager-main-screen/task-manager-main-screen.component';
 
-
-import { RouterModule } from '@angular/router';
-import { routes } from './app.config';
-const routingModule = RouterModule.forRoot(routes);
-export { routingModule };
+export const routes: Routes = [
+  { path: '', component: TaskManagerMainScreenComponent }
+];

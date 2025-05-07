@@ -1,21 +1,29 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../task';
+import {NgClass, NgForOf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-task-manager-main-screen',
   templateUrl: './task-manager-main-screen.component.html',
+  imports: [
+    NgClass,
+    FormsModule,
+    NgForOf
+  ],
   styleUrls: ['./task-manager-main-screen.component.css']
 })
 export class TaskManagerMainScreenComponent implements OnInit {
 
-  tasks: Task[] = [];
+  tasks: any[] = [];
   taskCountLabel: string = 'Task Count: 0';
   filterComboBox: string[] = ['All', 'TODO', 'DONE'];
   priorityComboBox: string[] = ['Low', 'Medium', 'High'];
-  taskNameField: string = '';
-  selectedTask: Task | null = null;
+  filter: string = 'All';
+  newTaskName: string = '';
+  newTaskPriority: string = '';
+  selectedTask: any | null = null;
 
   constructor() { }
 
@@ -27,9 +35,9 @@ export class TaskManagerMainScreenComponent implements OnInit {
   }
 
   addTask(): void {
-    const newTask: Task = {
-      name: this.taskNameField,
-      priority: this.priorityComboBox[0],
+    const newTask: any = {
+      name: this.newTaskName,
+      priority: this.newTaskPriority,
       status: 'TODO'
     };
     this.tasks.push(newTask);
@@ -75,10 +83,10 @@ export class TaskManagerMainScreenComponent implements OnInit {
     }
   }
 
-  applyFilter(filter: string): void {
-    if (filter === 'TODO') {
+  applyFilter(): void {
+    if (this.filter === 'TODO') {
       this.tasks = this.tasks.filter(task => task.status === 'TODO');
-    } else if (filter === 'DONE') {
+    } else if (this.filter === 'DONE') {
       this.tasks = this.tasks.filter(task => task.status === 'DONE');
     } else {
       this.tasks = this.tasks;
@@ -93,4 +101,7 @@ export class TaskManagerMainScreenComponent implements OnInit {
     }
   }
 
+  onTaskSelected($event: MouseEvent, task: any) {
+    this.selectedTask = task
+  }
 }

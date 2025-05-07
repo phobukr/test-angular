@@ -1,3 +1,42 @@
-
-
-<div class='top-panel'><label for='taskNameField'>Task Name:</label><input id='taskNameField' class='task-name-field' type='text' [(ngModel)]='newTaskName'><label for='priorityComboBox'>Priority:</label><select id='priorityComboBox' class='priority-combo-box' [(ngModel)]='newTaskPriority'><option>High</option><option>Medium</option><option>Low</option></select><button id='addButton' class='add-task-button' (click)='addTask()'>Add Task</button></div><div class='center-panel'><table id='taskTable' class='task-table'><tr><th>Name</th><th>Priority</th><th>Status</th></tr><tr *ngFor='let task of tasks'><td [ngClass]="{'high-priority': task.priority === 'High', 'medium-priority': task.priority === 'Medium', 'low-priority': task.priority === 'Low'}">{{ task.name }}</td><td>{{ task.priority }}</td><td>{{ task.status }}</td></tr></table></div><div class='bottom-panel'><div class='left-controls'><button id='markDoneButton' class='mark-done-button' (click)='markDone()'>Mark Done</button><button id='moveUpButton' class='move-up-button' (click)='moveUp()'>Move Up</button><button id='moveDownButton' class='move-down-button' (click)='moveDown()'>Move Down</button><button id='deleteButton' class='delete-button' (click)='deleteTask()'>Delete</button></div><div class='filter-panel'><label for='filterComboBox'>Filter:</label><select id='filterComboBox' class='filter-combo-box' [(ngModel)]='filter' (change)='applyFilter()'><option>All</option><option>TODO</option><option>DONE</option></select><button id='applyFilterButton' class='apply-filter-button' (click)='applyFilter()'>Apply Filter</button><span id='taskCountLabel' class='task-count-label'>Tasks: {{ tasks.length }}</span></div></div>
+<div class='top-panel'><label for='taskNameField'>Task Name:</label><input id='taskNameField' class='task-name-field'
+                                                                           type='text' [(ngModel)]='newTaskName'><label
+        for='priorityComboBox'>Priority:</label><select id='priorityComboBox' class='priority-combo-box'
+                                                        [(ngModel)]='newTaskPriority'>
+    <option>High</option>
+    <option>Medium</option>
+    <option>Low</option>
+</select>
+    <button id='addButton' class='add-task-button' (click)='addTask()'>Add Task</button>
+</div>
+<div class='center-panel'>
+    <table id='taskTable' class='task-table'>
+        <tr>
+            <th>Name</th>
+            <th>Priority</th>
+            <th>Status</th>
+        </tr>
+        <tr *ngFor='let task of tasks' [ngClass]="{'high-priority': task.priority === 'High', 'medium-priority': task.priority === 'Medium', 'low-priority': task.priority === 'Low'}"  (click)='onTaskSelected($event, task)'>
+            <td>{{ task.name }}</td>
+            <td>{{ task.priority }}</td>
+            <td>{{ task.status }}</td>
+        </tr>
+    </table>
+</div>
+<div class='bottom-panel'>
+    <div class='left-controls'>
+        <button id='markDoneButton' class='mark-done-button' (click)='markDone()'>Mark Done</button>
+        <button id='moveUpButton' class='move-up-button' (click)='moveUp()'>Move Up</button>
+        <button id='moveDownButton' class='move-down-button' (click)='moveDown()'>Move Down</button>
+        <button id='deleteButton' class='delete-button' (click)='deleteTask()'>Delete</button>
+    </div>
+    <div class='filter-panel'><label for='filterComboBox'>Filter:</label><select id='filterComboBox'
+                                                                                 class='filter-combo-box'
+                                                                                 [(ngModel)]='filter'
+                                                                                 (change)='applyFilter()'>
+        <option>All</option>
+        <option>TODO</option>
+        <option>DONE</option>
+    </select>
+        <button id='applyFilterButton' class='apply-filter-button' (click)='applyFilter()'>Apply Filter</button>
+        <span id='taskCountLabel' class='task-count-label'>Tasks: {{ tasks.length }}</span></div>
+</div>
