@@ -1,0 +1,62 @@
+
+
+.control-button {
+  background-color: #FF6363;
+  color: white;
+}
+
+.control-button.alternative {
+  background-color: #ADD8E6;
+  color: black;
+}
+
+.control-button.alternative2 {
+  background-color: #90EE90;
+  color: black;
+}
+
+.control-button.alternative3 {
+  background-color: #66CCFF;
+  color: black;
+}
+
+.control-button.disabled {
+  background-color: #ccc;
+  color: #666;
+}
+
+.selected {
+  background-color: #ADD8E6;
+}
+
+.selected-row {
+  background-color: #ADD8E6;
+}
+
+.high-priority {
+  background-color: #FFC0C0;
+}
+
+.medium-priority {
+  background-color: #FFFFC0;
+}
+
+.low-priority {
+  background-color: #C0FFC0;
+}
+
+.task-table tr.selected-row {
+  background-color: #ADD8E6;
+}
+
+.task-table tr td.high-priority {
+  background-color: #FFC0C0;
+}
+
+.task-table tr td.medium-priority {
+  background-color: #FFFFC0;
+}
+
+.task-table tr td.low-priority {
+  background-color: #C0FFC0;
+}
